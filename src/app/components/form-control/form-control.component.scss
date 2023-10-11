@@ -1,0 +1,92 @@
+@import '/src/theme/mixins.scss';
+
+@mixin input-styles {
+    color: var(--ion-color-dark);
+    background-color: var(--ion-color-light);
+    outline: 0px;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    padding: calc(0.5rem - 1.333px) calc(1rem - 1.333px);
+    height: 100%;
+}
+
+.form-control {
+    @include flex(column, 0rem);
+    position: relative;
+
+    &__label {
+        text-transform: capitalize;
+    }
+
+    &__group {
+        @include flex(row, 0rem);
+        position: relative;
+        align-items: stretch;
+        margin-top: 0.6rem;
+        margin-bottom: 0.3rem;
+
+        &-input {
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+        }
+
+
+        &-append {
+            @include input-styles;
+            cursor: pointer;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left: 1px solid var(--ion-color-dark-contrast);
+        }
+    }
+
+    &__input {
+        @include input-styles;
+        flex: 1;
+        padding-right: 1.7rem;
+        resize: none;
+
+        &--invalid {
+            color: var(--ion-color-danger);
+            border-color: var(--ion-color-danger);
+        }
+
+        &--focus {
+            color: var(--ion-color-dark);
+            border: 2px solid var(--ion-color-primary);
+            background-color: var(--ion-color-dark-contrast);
+        }
+
+        &--focus.form-control__group-append {
+            border-left: 0;
+            color: var(--ion-color-dark);
+            background-color: var(--ion-color-dark-contrast);
+        }
+
+        &--invalid.form-control__group-append {
+            border-left: 0;
+        }
+    }
+
+    &__helper {
+        @include flex(column, 0.4rem);
+        padding: 0 0.5rem;
+    }
+
+    &__input-container {
+        @include flex(row, 0rem);
+        align-items: center;
+        position: relative;
+        width: 100%;
+    }
+
+    &__status {
+        position: absolute;
+        z-index: 1000;
+        right: 0.5rem;
+    }
+}

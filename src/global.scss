@@ -1,0 +1,186 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import '@ionic/angular/css/display.css';
+
+@import "./theme/mixins.scss";
+
+/* Content styles */
+ion-content::part(scroll) {
+    @include flex(column);
+    align-items: center;
+    padding: 1rem;
+    transition: padding 0.15s linear;
+
+    @media (min-width: 1024px) {
+        gap: 5vh;
+        padding: 3vh 5vw;
+    }
+}
+
+section {
+    width: 100%;
+}
+
+/* Font sizes */
+h1,
+.heading-1 {
+    font-size: clamp(3.438rem, 4vw + 2rem, 5rem);
+    font-weight: bold;
+}
+
+h2,
+.heading-2 {
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
+}
+
+h3,
+.heading-3,
+.large-font {
+    font-size: clamp(1.5rem, 2vw + 1rem, 2.625rem);
+}
+
+.normal-font {
+    font-size: 1rem;
+}
+
+.small-font {
+    font-size: 0.75rem;
+}
+
+/* Text styles */
+.text {
+
+    /* Text colors */
+    &-primary {
+        color: var(--ion-color-primary)
+    }
+
+    &-secondary {
+        color: var(--ion-color-secondary);
+    }
+
+    &-tertiary {
+        color: var(--ion-color-tertiary);
+    }
+
+    &-success {
+        color: var(--ion-color-success);
+    }
+
+    &-warning {
+        color: var(--ion-color-warning);
+    }
+
+    &-danger {
+        color: var(--ion-color-danger);
+    }
+
+    &-gray {
+        color: var(--ion-color-medium);
+    }
+
+    /* Text transforms */
+    &-capitalize {
+        text-transform: capitalize;
+    }
+
+    &-lowercase {
+        text-transform: lowercase;
+    }
+
+    &-uppercase {
+        text-transform: uppercase;
+    }
+
+    &-bold {
+        font-weight: bold;
+    }
+
+    /* Text align */
+    &-start {
+        text-align: start;
+    }
+
+    &-center {
+        text-align: center;
+    }
+
+    &-end {
+        text-align: end;
+    }
+}
+
+/* Button styles */
+ion-button {
+    font-weight: 500;
+    width: fit-content;
+    text-transform: capitalize;
+    --color: var(--ion-color-dark);
+    --border-radius: 0.5rem;
+    --box-shadow: none;
+}
+
+/* Form styles */
+form {
+    @include flex(column, 1.5rem);
+    flex: 1;
+    width: 100%;
+}
+
+ion-button.submit {
+    width: 100%;
+    font-weight: bold;
+    --color: var(--ion-color-light);
+}
+
+/* Checkbox styles */
+ion-checkbox {
+    --size: 1.5rem;
+    --checkmark-color: var(--ion-color-light);
+    --checkbox-background-checked: var(--ion-color-primary);
+
+    &::part(container) {
+        border-radius: 0.4rem;
+        border: 2px solid var(--ion-color-primary);
+    }
+
+    &::part(mark) {
+        stroke-width: 2px;
+    }
+}
+
+/* Alert styles */
+.alert {
+    --border-radius: 0.5rem;
+
+    &.alert-success::part(icon) {
+        color: var(--ion-color-primary);
+    }
+
+    &.alert-danger::part(icon) {
+        color: var(--ion-color-danger);
+    }
+}
+
+/* Others */
+a.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}

@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <section class="home">
+    <div class="home__header">
+      <div class="header__start">
+        <app-svg-logo [type]="'only-icon'"></app-svg-logo>
+        <div class="header__title">
+          <span class="normal-font">Welcome</span>
+          <h1 class="heading-3 text-bold">{{ session?.email }}</h1>
+        </div>
+      </div>
+      <div class="header__end">
+        <ion-button color="light" class="small-font menu__switcher" (click)="switchMenuVisibility()">
+          <ion-icon slot="icon-only" [name]="isMenuVisible ? 'close-outline' : 'ellipsis-vertical' "></ion-icon>
+        </ion-button>
+        <app-hamburguer-menu 
+          *ngIf="isMenuVisible"
+          [options]="menuItems"
+          (onClick)="executeMenuAction($event)">
+        </app-hamburguer-menu>
+      </div>
+    </div>
+    <app-statistics-card
+      [title]="'Total Clients'"
+      [icon]="'person-outline'"
+      [quantity]="1234567"
+      [percentage]="15"
+      [type]="'quantity'"
+    ></app-statistics-card>
+    <app-statistics-card
+      [title]="'Total Earns'"
+      [icon]="'wallet-outline'"
+      [quantity]="1234567"
+      [percentage]="-10"
+      [type]="'money'"
+    ></app-statistics-card>
+  </section>
+</ion-content>

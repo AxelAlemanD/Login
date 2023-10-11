@@ -1,0 +1,56 @@
+<ion-content [fullscreen]="true">
+  <section class="sign-in">
+    <div class="sign-in__header">
+      <app-svg-logo [type]="'default'"></app-svg-logo>
+      <h1 class="heading-2 text-bold">Sign In</h1>
+      <span class="text-gray">Ready to increase your sales and grow your business?</span>
+    </div>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="signIn()" class="sign-in__form">
+      <app-form-control
+        [id]="'email'"
+        [name]="'email'"
+        [type]="'email'"
+        [label]="'Email Address'"
+        [placeholder]="'example@email.com'"
+        [control]="form.controls['email']"
+        [isDisabled]="signInStatus !== 'default'"
+        formControlName="email">
+      </app-form-control>
+      <app-form-control
+        [id]="'password'"
+        [name]="'password'"
+        [type]="isPasswordVisible ? 'text' : 'password'"
+        [label]="'Password'"
+        [hasAppend]="true"
+        [appendIcon]="isPasswordVisible ? 'eye-off-outline' : 'eye-outline'"
+        [control]="form.controls['password']"
+        [isDisabled]="signInStatus !== 'default'"
+        (onClickAppend)="togglePasswordVisibilty()"
+        formControlName="password">
+      </app-form-control>
+
+      <div class="sign-in__submit">
+        <div class="submit__primary">
+          <app-form-submit-button
+            [title]="'Sign In'"
+            [status]="signInStatus"
+            [isFormValid]="form.valid"
+            [loadingTitle]="'Logging In'"
+            [successTitle]="'Sign In Successfully'"
+            (onClick)="signIn()">
+          </app-form-submit-button>
+          <div class="submit__options">
+            <ion-checkbox mode="ios" labelPlacement="end" class="option__remember" formControlName="remember">Remember me</ion-checkbox>
+            <a class="option__reset" [routerLink]="['/reset-password']" routerLinkActive="router-link-active" [ngClass]="{'disabled': signInStatus !== 'default'}">
+              forgot password?
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+    
+    <span class="normal-font text-center">
+      Don't have an account? <a [routerLink]="['/signup']" routerLinkActive="router-link-active" [ngClass]="{'disabled': signInStatus !== 'default'}">Sign up</a> 
+    </span>
+  </section>
+</ion-content>

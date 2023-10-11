@@ -1,0 +1,19 @@
+<ul class="menu">
+    <li *ngFor="let option of options" class="menu__option">
+        <ion-button 
+            fill="clear" 
+            id="option-{{ option.id }}"
+            class="small-font menu__item"
+            [color]="option.color" 
+            (click)="emitClickedOption(option)"
+        >
+            <ion-icon 
+                *ngIf="option.icon" 
+                class="menu__icon"
+                slot="start" 
+                [name]="option.icon">
+            </ion-icon>
+            {{ option.name }}
+        </ion-button>
+    </li>
+</ul>

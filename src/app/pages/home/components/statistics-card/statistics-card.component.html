@@ -1,0 +1,32 @@
+<article class="statistics cursor-pointer">
+    <div class="statistics__header">
+        <div class="header__start">
+            <div class="header__icon">
+                <ion-icon [name]="icon" class="normal-font"></ion-icon>
+            </div>
+            <h2 class="normal-font text-bold">{{ title }}</h2>
+        </div>
+      
+        <ion-button fill="clear" size="small" >
+          <ion-icon slot="icon-only" name="chevron-forward-outline" class="normal-font"></ion-icon>
+        </ion-button>
+    </div>
+    <div class="statistics__content">
+        <span class="large-font text-bold">
+            <ng-container *ngIf="type === 'quantity'">
+                {{ quantity | number }}
+            </ng-container>
+            <ng-container *ngIf="type === 'money'">
+                {{ quantity | currency:'MXN':'symbol':'1.2-2' }}
+            </ng-container>
+        </span>
+
+        <div class="statistics__percentage">
+            <ion-chip [color]="percentage > 0 ? 'success' : 'danger'">
+                <ion-label>{{ percentage }}%</ion-label>
+                <ion-icon [name]="percentage > 0 ? 'trending-up-outline' : 'trending-down-outline'"></ion-icon>
+            </ion-chip>
+            <span class="small-font text-gray">From last month</span>
+        </div>
+    </div>
+</article>

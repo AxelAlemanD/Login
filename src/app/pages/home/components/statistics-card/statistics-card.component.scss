@@ -1,0 +1,55 @@
+@import '/src/theme/mixins.scss';
+
+.statistics {
+    @include flex(column);
+    text-align: left;
+    border-radius: 0.5rem;
+    border: 1px solid var(--ion-color-gray);
+    background-color: var(--ion-color-dark-contrast);
+
+    &__header {
+        @include flex(row);
+        padding: 0.5rem 1rem;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid var(--ion-color-gray);
+
+        h2 {
+            flex: 1;
+            margin: 0;
+        }
+
+        button {
+            background-color: transparent;
+        }
+
+        .header__start {
+            @include flex(row, 0.5rem);
+            align-items: center;
+
+            .header__icon {
+                padding: 0.6rem;
+                border-radius: 0.5rem;
+                background-color: var(--ion-color-light);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+
+    &__content {
+        @include flex(column);
+        padding: 0.5rem 1rem;
+    }
+
+    &__percentage {
+        @include flex(row, 0.5rem);
+        align-items: center;
+
+        ion-chip {
+            border-radius: 0.5rem;
+        }
+    }
+}

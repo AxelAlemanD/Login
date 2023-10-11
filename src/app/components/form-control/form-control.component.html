@@ -1,0 +1,65 @@
+<div class="form-control">
+    <label *ngIf="label" for="{{ id }}" class="normal-font form-control__label text-start">
+      {{ label }}
+      <small *ngIf="!isRequired" class="small-font text-gray"> (optional) </small>
+    </label>
+    
+    <div class="form-control__group">
+      <div class="form-control__input-container">
+        <input 
+          class="form-control__input" 
+          [id]="id" 
+          [name]="name" 
+          [type]="type" 
+          [min]="min" 
+          [max]="max"
+          [placeholder]="placeholder" 
+          [required]="isRequired"
+          [disabled]="isDisabled" 
+          [readonly]="isReadOnly" 
+          [(ngModel)]="innerValue"
+          (ngModelChange)="onChange($event)" 
+          (blur)="onTouched($event)"
+          (blur)="onBlur()"
+          (focus)="onFocused()"
+          [ngClass]="{
+            'form-control__group-input': hasAppend,
+            'form-control__input--focus': isFocused,
+            'form-control__input--invalid': control.errors && control.touched
+          }"
+        />
+        <ion-icon 
+          *ngIf="control.errors && control.touched"
+          name="alert-outline" 
+          class="text-danger form-control__status">
+        </ion-icon>
+        <ion-icon 
+          *ngIf="control.valid && control.value"
+          name="checkmark-outline" 
+          class="text-success form-control__status">
+        </ion-icon>
+      </div>
+      <div 
+        *ngIf="hasAppend"
+        class="form-control__group-append"
+        [ngClass]="{
+          'form-control__input--focus': isFocused,
+          'form-control__input--invalid': control.errors && control.touched,
+        }"
+        (click)="emitAppendClick()"
+      >
+        <ion-icon *ngIf="appendIcon" [name]="appendIcon"></ion-icon>
+      </div>
+    </div>
+  
+    <div 
+      *ngIf="helper || control.invalid" 
+      class="form-control__helper" 
+      [ngClass]="control.invalid && (control.dirty || control.touched) ? 'text-danger' : 'text-gray'"
+    >
+      <small *ngIf="helper" class="text-start"> {{ helper }}</small>
+      <small class="text-danger text-start" *ngIf="control.invalid && (control.dirty || control.touched)">
+        {{ errorMessages | validation: { name: label, type } : control.errors }}
+      </small>
+    </div>
+  </div>

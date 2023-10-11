@@ -1,0 +1,42 @@
+@import "/src/theme/mixins.scss";
+
+.home {
+    @include flex(column, 2rem);
+    flex: 1;
+
+    &__header {
+        @include flex(row, 0);
+        align-items: center;
+        justify-content: space-between;
+
+        .header__start {
+            @include flex(row, 1rem);
+            align-items: center;
+
+            .header__title {
+                @include flex(column, 0.25rem);
+
+                h1 {
+                    margin: 0;
+                }
+            }
+
+            app-svg-logo {
+                width: 2.2rem;
+            }
+        }
+
+        .header__end {
+            position: relative;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        max-width: 50rem;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--ion-color-primary);
+}

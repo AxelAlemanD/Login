@@ -1,0 +1,12 @@
+<ion-button 
+    class="submit" 
+    [color]="color"
+    [disabled]="!isFormValid || status !== 'default'" 
+    (click)="emitClick()"
+>
+    <span *ngIf="status === 'default' || status === 'success' && !successTitle ">{{ title }}</span>
+    <span *ngIf="status === 'loading' && loadingTitle">{{ loadingTitle }}</span>
+    <span *ngIf="status === 'success' && successTitle">{{ successTitle }}</span>
+    <ion-spinner *ngIf="status === 'loading'" slot="end"></ion-spinner>
+    <ion-icon *ngIf="status === 'success'" slot="end" name="checkmark-outline"></ion-icon>
+</ion-button>

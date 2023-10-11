@@ -1,0 +1,7 @@
+{
+  "name": "login-advantage-marketing",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

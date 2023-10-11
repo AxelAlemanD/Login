@@ -1,0 +1,62 @@
+<ion-content [fullscreen]="true">
+  <section class="sign-up">
+    <div class="sign-up__header">
+      <app-svg-logo [type]="'default'"></app-svg-logo>
+      <h1 class="heading-2 text-bold">Sign Up</h1>
+      <span class="text-gray">Ready to increase your sales and grow your business?</span>
+    </div>
+    <form *ngIf="form" [formGroup]="form" (ngSubmit)="signUp()" class="sign-up__form">
+      <app-form-control
+        [id]="'email'"
+        [name]="'email'"
+        [type]="'email'"
+        [label]="'Email Address'"
+        [placeholder]="'example@email.com'"
+        [control]="form.controls['email']"
+        [isDisabled]="signUpStatus !== 'default'"
+        formControlName="email">
+      </app-form-control>
+      <app-form-control
+        [id]="'password'"
+        [name]="'password'"
+        [type]="isPasswordVisible ? 'text' : 'password'"
+        [label]="'Password'"
+        [hasAppend]="true"
+        [appendIcon]="isPasswordVisible ? 'eye-off-outline' : 'eye-outline'"
+        [helper]="'Minimum 6 characters with at least 1 lower case, 1 upper case and 1 number'"
+        [control]="form.controls['password']"
+        [isDisabled]="signUpStatus !== 'default'"
+        (onClickAppend)="togglePasswordVisibilty('password')"
+        formControlName="password">
+      </app-form-control>
+      <app-form-control
+        [id]="'confirmPassword'"
+        [name]="'confirmPassword'"
+        [type]="isConfirmPasswordVisible ? 'text' : 'password'"
+        [label]="'Confirm Password'"
+        [hasAppend]="true"
+        [appendIcon]="isConfirmPasswordVisible ? 'eye-off-outline' : 'eye-outline'"
+        [isDisabled]="form.controls['password'].invalid"
+        [control]="form.controls['confirmPassword']"
+        [isDisabled]="signUpStatus !== 'default'"
+        (onClickAppend)="togglePasswordVisibilty('confirmPassword')"
+        formControlName="confirmPassword">
+      </app-form-control>
+    </form>
+    <div class="sign-up__submit">
+      <div class="submit__primary">
+        <app-form-submit-button
+          [title]="'Sign Up'"
+          [status]="signUpStatus"
+          [isFormValid]="form.valid"
+          [loadingTitle]="'Registering account'"
+          [successTitle]="'Registered Successfully'"
+          (onClick)="signUp()">
+        </app-form-submit-button>
+      </div>
+    </div>
+    <span class="normal-font text-center">
+      Already have an account? <a [routerLink]="['/login']" routerLinkActive="router-link-active" [ngClass]="{'disabled': signUpStatus !== 'default'}">Sign in</a> 
+    </span>
+  </section>
+</ion-content>
