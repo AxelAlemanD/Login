@@ -1,4 +1,4 @@
-# Advantage Marketing Technical Test
+# Login
 
 Solution to the Advantage Marketing technical test for the position of Angular/Ionic developer
 
